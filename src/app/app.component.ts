@@ -1,12 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
-import { RestAdminsPage } from '../pages/Restaurant Admins/rest-admins/rest-admins';
-import { ViewRestaurantsPage } from '../pages/Restaurants/view-restaurants/view-restaurants';
 import { HomePage } from '../pages/Utility/home/home';
-import { ViewMenuPage } from '../pages/Menus/view-menu/view-menu';
 import { UsersPage } from '../pages/Users/users/users';
-import { NotificationMainPage } from '../pages/Notifications/notification-main/notification-main';
-import { AddRestaurantPage } from '../pages/Restaurants/add-restaurant/add-restaurant';
+import { PartnerAdminsPage } from '../pages/Partners/partner-admins/partner-admins';
+import { ViewRestaurantsPage } from '../pages/Partner Restaurants/Restaurants/view-restaurants/view-restaurants';
+import { ViewMenuPage } from '../pages/Partner Restaurants/Menus/view-menu/view-menu';
+import { NotificationMainPage } from '../pages/Utility/Notifications/notification-main/notification-main';
+import { ViewPlayZonePage } from '../pages/Partner Playzones/PlayZones/view-play-zone/view-play-zone';
+import { ViewGamesPage } from '../pages/Partner Playzones/Game Menus/view-games/view-games';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { AddRestaurantPage } from '../pages/Restaurants/add-restaurant/add-resta
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = RestAdminsPage;
+  rootPage: any = PartnerAdminsPage;
 
   activePage: any;
   pages: Array<{ title: string, component: any, icon: any }>;
@@ -23,9 +24,14 @@ export class MyApp {
     this.initializeApp();
     this.pages = [
       { title: 'Home', component: HomePage, icon: "home" },
+      { title: 'Walk In Partners', component: PartnerAdminsPage, icon: "ios-contact" },
+
       { title: 'Restaurants', component: ViewRestaurantsPage, icon: "md-pizza" },
-      { title: 'Restaurant Admins', component: RestAdminsPage, icon: "ios-contact" },
-      { title: 'Menus', component: ViewMenuPage, icon: "md-paper" },
+      { title: 'Restaurant Menus', component: ViewMenuPage, icon: "md-paper" },
+
+      { title: 'Play Zones', component: ViewPlayZonePage, icon: "logo-steam" },
+      { title: 'Play Zone Games', component: ViewGamesPage, icon: "md-game-controller-b" },
+
       { title: 'Users', component: UsersPage, icon: "ios-people" },
       { title: 'Notifications', component: NotificationMainPage, icon: "ios-mail" },
     ];

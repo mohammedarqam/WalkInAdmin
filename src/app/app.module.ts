@@ -7,22 +7,29 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HomePage } from '../pages/Utility/home/home';
 import { LoginPage } from '../pages/Utility/login/login';
-import { AddRestaurantPage } from '../pages/Restaurants/add-restaurant/add-restaurant';
-import { ViewRestaurantsPage } from '../pages/Restaurants/view-restaurants/view-restaurants';
-import { EditRestaurantPage } from '../pages/Restaurants/edit-restaurant/edit-restaurant';
-import { RestaurantDetailsPage } from '../pages/Restaurants/restaurant-details/restaurant-details';
-import { RestAdminAddPage } from '../pages/Restaurant Admins/rest-admin-add/rest-admin-add';
-import { RestAdminsPage } from '../pages/Restaurant Admins/rest-admins/rest-admins';
-import { AddItemPage } from '../pages/Menus/add-item/add-item';
-import { ViewMenuPage } from '../pages/Menus/view-menu/view-menu';
+import { NotificationMainPage } from '../pages/Utility/Notifications/notification-main/notification-main';
+import { UserAddNotificationsPage } from '../pages/Utility/Notifications/User/user-add-notifications/user-add-notifications';
+import { UserViewNotificationsPage } from '../pages/Utility/Notifications/User/user-view-notifications/user-view-notifications';
+import { VendorAddNotificationsPage } from '../pages/Utility/Notifications/Vendor/vendor-add-notifications/vendor-add-notifications';
+import { VendorViewNotificationsPage } from '../pages/Utility/Notifications/Vendor/vendor-view-notifications/vendor-view-notifications';
+import { UserRestaurantsPage } from '../pages/Users/user-restaurants/user-restaurants';
 import { UsersPage } from '../pages/Users/users/users';
 import { ViewCartPage } from '../pages/Users/view-cart/view-cart';
-import { UserRestaurantsPage } from '../pages/Users/user-restaurants/user-restaurants';
-import { UserAddNotificationsPage } from '../pages/Notifications/User/user-add-notifications/user-add-notifications';
-import { UserViewNotificationsPage } from '../pages/Notifications/User/user-view-notifications/user-view-notifications';
-import { VendorAddNotificationsPage } from '../pages/Notifications/Vendor/vendor-add-notifications/vendor-add-notifications';
-import { VendorViewNotificationsPage } from '../pages/Notifications/Vendor/vendor-view-notifications/vendor-view-notifications';
-import { NotificationMainPage } from '../pages/Notifications/notification-main/notification-main';
+import { PartnerAdminAddPage } from '../pages/Partners/partner-admin-add/partner-admin-add';
+import { PartnerAdminEditPage } from '../pages/Partners/partner-admin-edit/partner-admin-edit';
+import { PartnerAdminsPage } from '../pages/Partners/partner-admins/partner-admins';
+import { AddItemPage } from '../pages/Partner Restaurants/Menus/add-item/add-item';
+import { ViewMenuPage } from '../pages/Partner Restaurants/Menus/view-menu/view-menu';
+import { AddRestaurantPage } from '../pages/Partner Restaurants/Restaurants/add-restaurant/add-restaurant';
+import { EditRestaurantPage } from '../pages/Partner Restaurants/Restaurants/edit-restaurant/edit-restaurant';
+import { RestaurantDetailsPage } from '../pages/Partner Restaurants/Restaurants/restaurant-details/restaurant-details';
+import { ViewRestaurantsPage } from '../pages/Partner Restaurants/Restaurants/view-restaurants/view-restaurants';
+import { AddGamesPage } from '../pages/Partner Playzones/Game Menus/add-games/add-games';
+import { ViewGamesPage } from '../pages/Partner Playzones/Game Menus/view-games/view-games';
+import { AddPlayZonePage } from '../pages/Partner Playzones/PlayZones/add-play-zone/add-play-zone';
+import { EditPlayZonePage } from '../pages/Partner Playzones/PlayZones/edit-play-zone/edit-play-zone';
+import { PlayZoneDetailsPage } from '../pages/Partner Playzones/PlayZones/play-zone-details/play-zone-details';
+import { ViewPlayZonePage } from '../pages/Partner Playzones/PlayZones/view-play-zone/view-play-zone';
 
 
 export const firebaseConfig = {
@@ -40,22 +47,30 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     LoginPage,
-    AddRestaurantPage,
-    ViewRestaurantsPage,
-    EditRestaurantPage,
-    RestaurantDetailsPage,
-    RestAdminAddPage,
-    RestAdminsPage,
-    AddItemPage,
-    ViewMenuPage,
-    UsersPage,
-    ViewCartPage,
-    UserRestaurantsPage,
     NotificationMainPage,
     UserAddNotificationsPage,
     UserViewNotificationsPage,
     VendorAddNotificationsPage,
-    VendorViewNotificationsPage
+    VendorViewNotificationsPage,
+    UserRestaurantsPage,
+    UsersPage,
+    ViewCartPage,
+    PartnerAdminAddPage,
+    PartnerAdminEditPage,
+    PartnerAdminsPage,
+    AddItemPage,
+    ViewMenuPage,
+    AddRestaurantPage,
+    EditRestaurantPage,
+    RestaurantDetailsPage,
+    ViewRestaurantsPage,
+    AddGamesPage,
+    ViewGamesPage,
+    AddPlayZonePage,
+    EditPlayZonePage,
+    PlayZoneDetailsPage,
+    ViewPlayZonePage,
+
   ],
   imports: [
     BrowserModule,
@@ -68,22 +83,29 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     LoginPage,
-    AddRestaurantPage,
-    ViewRestaurantsPage,
-    EditRestaurantPage,
-    RestaurantDetailsPage,
-    RestAdminAddPage,
-    RestAdminsPage,
-    AddItemPage,
-    ViewMenuPage,
-    UsersPage,
-    ViewCartPage,
-    UserRestaurantsPage,
     NotificationMainPage,
     UserAddNotificationsPage,
     UserViewNotificationsPage,
     VendorAddNotificationsPage,
-    VendorViewNotificationsPage
+    VendorViewNotificationsPage,
+    UserRestaurantsPage,
+    UsersPage,
+    ViewCartPage,
+    PartnerAdminAddPage,
+    PartnerAdminEditPage,
+    PartnerAdminsPage,
+    AddItemPage,
+    ViewMenuPage,
+    AddRestaurantPage,
+    EditRestaurantPage,
+    RestaurantDetailsPage,
+    ViewRestaurantsPage,
+    AddGamesPage,
+    ViewGamesPage,
+    AddPlayZonePage,
+    EditPlayZonePage,
+    PlayZoneDetailsPage,
+    ViewPlayZonePage,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler}
