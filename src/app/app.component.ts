@@ -1,5 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
+import { RestAdminsPage } from '../pages/Restaurant Admins/rest-admins/rest-admins';
+import { ViewRestaurantsPage } from '../pages/Restaurants/view-restaurants/view-restaurants';
+import { HomePage } from '../pages/Utility/home/home';
+import { ViewMenuPage } from '../pages/Menus/view-menu/view-menu';
+import { UsersPage } from '../pages/Users/users/users';
+import { NotificationMainPage } from '../pages/Notifications/notification-main/notification-main';
 
 
 @Component({
@@ -7,15 +13,19 @@ import { Nav, Platform } from 'ionic-angular';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = "HomePage";
+  rootPage: any = HomePage;
   activePage: any;
   pages: Array<{ title: string, component: any, icon: any }>;
 
   constructor(public platform: Platform,) {
     this.initializeApp();
     this.pages = [
-      { title: 'Home', component: "HomePage", icon: "home" },
-      { title: 'Restaurants', component: "ViewRestaurantsPage", icon: "md-pizza" },
+      { title: 'Home', component: HomePage, icon: "home" },
+      { title: 'Restaurants', component: ViewRestaurantsPage, icon: "md-pizza" },
+      { title: 'Restaurant Admins', component: RestAdminsPage, icon: "ios-contact" },
+      { title: 'Menus', component: ViewMenuPage, icon: "md-paper" },
+      { title: 'Users', component: UsersPage, icon: "ios-people" },
+      { title: 'Notifications', component: NotificationMainPage, icon: "ios-mail" },
     ];
     this.activePage = this.pages[0];
   }
