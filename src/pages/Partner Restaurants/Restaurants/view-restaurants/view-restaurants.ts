@@ -4,6 +4,8 @@ import { AngularFireDatabase, } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { AddRestaurantPage } from '../add-restaurant/add-restaurant';
+import { EditRestaurantPage } from '../edit-restaurant/edit-restaurant';
 
 @IonicPage()
 @Component({
@@ -29,14 +31,14 @@ export class ViewRestaurantsPage {
       key: c.payload.key, ...c.payload.val()
     }))
   });
-
-
-
-  
-
 }
 
+addRestaurant(){
+  this.navCtrl.setRoot(AddRestaurantPage);
+}
 
-
+editRestaurant(restKey){
+  this.navCtrl.setRoot(EditRestaurantPage,{restKey : restKey});
+}
 
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the EditRestaurantPage page.
+ * Generated class for the PartnerAdminAddPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-edit-restaurant',
-  templateUrl: 'edit-restaurant.html',
+  selector: 'page-partner-admin-add',
+  templateUrl: 'partner-admin-add.html',
 })
-export class EditRestaurantPage {
+export class PartnerAdminAddPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EditRestaurantPage');
+    console.log('ionViewDidLoad PartnerAdminAddPage');
   }
 
 }

@@ -28,7 +28,7 @@
             <ion-card-content>
               <ion-item>
               <ion-card-title item-start >{{rest.RestaurantName}}</ion-card-title>
-              <button ion-button item-end color="primary" icon-only clear (click)="editRes(rest)" >
+              <button ion-button item-end color="primary" icon-only clear (click)="editRestaurant(rest.key)" >
                 <ion-icon name="create"  ></ion-icon>
                 </button>
               </ion-item>
@@ -43,7 +43,7 @@
 
 
   <ion-fab right bottom>
-    <button ion-fab color="danger" >
+    <button ion-fab color="danger" (click)="addRestaurant()" >
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>

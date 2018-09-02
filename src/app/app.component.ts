@@ -6,6 +6,7 @@ import { HomePage } from '../pages/Utility/home/home';
 import { ViewMenuPage } from '../pages/Menus/view-menu/view-menu';
 import { UsersPage } from '../pages/Users/users/users';
 import { NotificationMainPage } from '../pages/Notifications/notification-main/notification-main';
+import { AddRestaurantPage } from '../pages/Restaurants/add-restaurant/add-restaurant';
 
 
 @Component({
@@ -13,7 +14,8 @@ import { NotificationMainPage } from '../pages/Notifications/notification-main/n
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = HomePage;
+  rootPage: any = RestAdminsPage;
+
   activePage: any;
   pages: Array<{ title: string, component: any, icon: any }>;
 
@@ -27,7 +29,7 @@ export class MyApp {
       { title: 'Users', component: UsersPage, icon: "ios-people" },
       { title: 'Notifications', component: NotificationMainPage, icon: "ios-mail" },
     ];
-    this.activePage = this.pages[0];
+    this.activePage = this.pages[2];
   }
 
   initializeApp() {
