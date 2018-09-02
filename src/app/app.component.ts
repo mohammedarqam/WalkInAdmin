@@ -1,30 +1,23 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 
-import { HomePage } from '../pages/home/home';
-import * as firebase from 'firebase';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
-  rootPage: any = "LoginPage";
+  rootPage: any = "HomePage";
   activePage: any;
-
-
   pages: Array<{ title: string, component: any, icon: any }>;
 
   constructor(public platform: Platform,) {
     this.initializeApp();
-
     this.pages = [
-      { title: 'Home', component: HomePage, icon: "home" },
-
-
+      { title: 'Home', component: "HomePage", icon: "home" },
+      { title: 'Restaurants', component: "ViewRestaurantsPage", icon: "md-pizza" },
     ];
     this.activePage = this.pages[0];
-
   }
 
   initializeApp() {
