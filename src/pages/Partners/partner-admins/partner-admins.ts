@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import * as firebase from 'firebase';
+import { PartnerAdminAddPage } from '../partner-admin-add/partner-admin-add';
 
-/**
- * Generated class for the PartnerAdminsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -15,11 +12,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PartnerAdminsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+  public navCtrl: NavController, 
+  public navParams: NavParams
+  ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PartnerAdminsPage');
+  ionViewWillEnter(){
+
+  }
+
+
+
+  addAdmin(){
+    this.navCtrl.push(PartnerAdminAddPage);
   }
 
 }

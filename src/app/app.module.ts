@@ -3,8 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HomePage } from '../pages/Utility/home/home';
 import { LoginPage } from '../pages/Utility/login/login';
 import { NotificationMainPage } from '../pages/Utility/Notifications/notification-main/notification-main';
@@ -30,16 +28,16 @@ import { AddPlayZonePage } from '../pages/Partner Playzones/PlayZones/add-play-z
 import { EditPlayZonePage } from '../pages/Partner Playzones/PlayZones/edit-play-zone/edit-play-zone';
 import { PlayZoneDetailsPage } from '../pages/Partner Playzones/PlayZones/play-zone-details/play-zone-details';
 import { ViewPlayZonePage } from '../pages/Partner Playzones/PlayZones/view-play-zone/view-play-zone';
+import * as firebase from 'firebase';
 
-
-export const firebaseConfig = {
+  firebase.initializeApp({
   apiKey: "AIzaSyAE8aWWXXnIemdrHUPA7e93GqA5hNEK1SU",
   authDomain: "walkin-app-codebro.firebaseapp.com",
   databaseURL: "https://walkin-app-codebro.firebaseio.com",
   projectId: "walkin-app-codebro",
   storageBucket: "walkin-app-codebro.appspot.com",
   messagingSenderId: "1066189513591"
-};
+  });
 
 
 @NgModule({
@@ -75,8 +73,6 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
