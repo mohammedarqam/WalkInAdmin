@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar color="danger">
+      <ion-title>Delete Partner</ion-title>
+      <ion-buttons end>
+        <button ion-button outline (click)="cancel()">CANCEL</button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+    <ion-slides>
+      <ion-slide>
+        <h2 ion-text color="primary" >Enter "{{partner.Name}}" to delete</h2>
+        <ion-item class="content" >
+          <ion-label floating>Partner Name</ion-label>
+          <ion-input type="text" (ionChange)="capsName(Name)" [(ngModel)]="pName" aotufocus ></ion-input>
+        </ion-item>
+    <button ion-button block color="danger" [disabled]="pName!=partner.Name" (click)="checkData()">DELETE</button>
+    </ion-slide>
+    </ion-slides>
+  </ion-content>
+  

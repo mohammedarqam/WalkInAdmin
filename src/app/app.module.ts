@@ -28,17 +28,23 @@ import { AddPlayZonePage } from '../pages/Partner Playzones/PlayZones/add-play-z
 import { EditPlayZonePage } from '../pages/Partner Playzones/PlayZones/edit-play-zone/edit-play-zone';
 import { PlayZoneDetailsPage } from '../pages/Partner Playzones/PlayZones/play-zone-details/play-zone-details';
 import { ViewPlayZonePage } from '../pages/Partner Playzones/PlayZones/view-play-zone/view-play-zone';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import {AngularFireAuthModule} from 'angularfire2/auth';
 import * as firebase from 'firebase';
+import { PartnerAdminOptionsPage } from '../pages/Partners/partner-admin-options/partner-admin-options';
+import { PartnerAdminViewPage } from '../pages/Partners/partner-admin-view/partner-admin-view';
+import { PartnerDeletePage } from '../pages/Partners/partner-delete/partner-delete';
 
-  firebase.initializeApp({
+  export const firebaseCred = {
   apiKey: "AIzaSyAE8aWWXXnIemdrHUPA7e93GqA5hNEK1SU",
   authDomain: "walkin-app-codebro.firebaseapp.com",
   databaseURL: "https://walkin-app-codebro.firebaseio.com",
   projectId: "walkin-app-codebro",
   storageBucket: "walkin-app-codebro.appspot.com",
   messagingSenderId: "1066189513591"
-  });
-
+  };
+  firebase.initializeApp(firebaseCred);
 
 @NgModule({
   declarations: [
@@ -68,11 +74,17 @@ import * as firebase from 'firebase';
     EditPlayZonePage,
     PlayZoneDetailsPage,
     ViewPlayZonePage,
+    PartnerAdminOptionsPage,
+    PartnerAdminViewPage,
+    PartnerDeletePage,
 
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseCred),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -102,9 +114,12 @@ import * as firebase from 'firebase';
     EditPlayZonePage,
     PlayZoneDetailsPage,
     ViewPlayZonePage,
+    PartnerAdminOptionsPage,
+    PartnerAdminViewPage,
+    PartnerDeletePage,
   ],
   providers: [
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}

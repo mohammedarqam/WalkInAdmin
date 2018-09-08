@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>Add Partner</ion-title>
+      <ion-buttons end>
+        <button ion-button outline (click)="close()">Done</button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+
+    <ion-card >
+      <ion-card-content>
+        
+        <ion-item >
+          <p ion-text item-start color="primary">Name</p>
+          <p item-end > {{partner.Name}} </p>
+        </ion-item>
+ 
+        <ion-item >
+          <p ion-text item-start color="primary">Email</p>
+          <p item-end > {{partner.Email}} </p>
+        </ion-item>
+ 
+        <ion-item >
+          <p ion-text item-start color="primary">Phone</p>
+          <p item-end > {{partner.Phone}} </p>
+        </ion-item>
+ 
+        <ion-item >
+          <p ion-text item-start color="primary">Password</p>
+          <p item-end > {{partner.Password}} </p>
+        </ion-item>
+
+        <ion-item >
+          <p ion-text item-start color="primary">Extra Details</p>
+          <p item-end > {{partner.ExtraDetails}} </p>
+        </ion-item>
+
+
+        
+      </ion-card-content>
+    </ion-card>
+
+  </ion-content>
+  

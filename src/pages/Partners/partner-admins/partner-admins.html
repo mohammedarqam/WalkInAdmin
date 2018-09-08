@@ -16,12 +16,42 @@
   </ion-col>
   <ion-col col-6 push-2 >
   <ion-searchbar item-end animated="true" placeholder="Search a Partner" 
-  [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
+  [(ngModel)]="search" ></ion-searchbar>
   </ion-col>
   </ion-row>
   </ion-grid>
   
 
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3 *ngFor="let p of partners | async ">
+        <ion-card>
+
+          <ion-navbar class="titel" color="primary" >
+            <ion-title  >{{p.Name}}</ion-title>
+            <ion-buttons end>
+              <button ion-button clear (click)="viewOptions($event,p)" icon-only >
+                <ion-icon name="md-more"></ion-icon>
+              </button>
+            </ion-buttons>
+          </ion-navbar>
+
+          <ion-card-content>
+            <ion-item>
+              <ion-icon name="ios-mail" item-start color="primary"></ion-icon>
+              <p item-end > {{p.Email}} </p>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="md-call" item-start color="primary"></ion-icon>
+              <p item-end > {{p.Phone}} </p>
+            </ion-item>
+          </ion-card-content>
+          <!-- <button ion-button (click)="">Edit</button> -->
+      </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 
   <ion-fab right bottom>

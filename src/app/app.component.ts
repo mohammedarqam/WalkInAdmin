@@ -39,19 +39,18 @@ export class MyApp {
       { title: 'Users', component: UsersPage, icon: "ios-people" },
       { title: 'Notifications', component: NotificationMainPage, icon: "ios-mail" },
     ];
-    this.activePage = this.pages[2];
+    this.activePage = this.pages[1];
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-        firebase.database().ref("Admins").once('value',itemSnapshot=>{
+        firebase.database().ref("WalkInAdmin").once('value',itemSnapshot=>{
           itemSnapshot.forEach(itemSnap => {
             if(itemSnap.exists()){
               var welMsg = "Welcome"+" "+itemSnap.val().Name;
-
-              this.rootPage = HomePage;
+              this.rootPage = PartnerAdminsPage;
               
               this.presentToast(welMsg);
             }
@@ -76,12 +75,13 @@ export class MyApp {
   }
 
   signOut() {
-/*    firebase.auth().signOut().then(() => {
-      this.nav.setRoot(MainLoginPage);
+    firebase.auth().signOut().then(() => {
+      this.nav.setRoot(LoginPage);
+      this.presentToast("Signed Out");
     }).catch((error) => {
       console.log(error.message);
     });
-  */
+
  
 }
 presentToast(msg) {
