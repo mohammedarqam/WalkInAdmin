@@ -35,6 +35,7 @@ import * as firebase from 'firebase';
 import { PartnerAdminOptionsPage } from '../pages/Partners/partner-admin-options/partner-admin-options';
 import { PartnerAdminViewPage } from '../pages/Partners/partner-admin-view/partner-admin-view';
 import { PartnerDeletePage } from '../pages/Partners/partner-delete/partner-delete';
+import { CountoModule }  from 'angular2-counto';
 
   export const firebaseCred = {
   apiKey: "AIzaSyAE8aWWXXnIemdrHUPA7e93GqA5hNEK1SU",
@@ -85,6 +86,7 @@ import { PartnerDeletePage } from '../pages/Partners/partner-delete/partner-dele
     AngularFireModule.initializeApp(firebaseCred),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    CountoModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

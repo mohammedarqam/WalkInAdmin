@@ -39,7 +39,7 @@ export class MyApp {
       { title: 'Users', component: UsersPage, icon: "ios-people",color: "whiter" },
       { title: 'Notifications', component: NotificationMainPage, icon: "ios-mail",color: "whiter" },
     ];
-    this.activePage = this.pages[1];
+    this.activePage = this.pages[0];
   }
 
   initializeApp() {
@@ -50,7 +50,7 @@ export class MyApp {
           itemSnapshot.forEach(itemSnap => {
             if(itemSnap.exists()){
               var welMsg = "Welcome"+" "+itemSnap.val().Name;
-              this.rootPage = PartnerAdminsPage;
+              this.rootPage = HomePage;
               
               this.presentToast(welMsg);
             }
