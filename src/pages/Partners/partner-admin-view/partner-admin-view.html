@@ -31,7 +31,14 @@
  
         <ion-item >
           <p ion-text item-start color="primary">Password</p>
-          <p item-end > {{partner.Password}} </p>
+          <p item-end *ngIf="!valid" > ******** </p>
+          <p item-end *ngIf="valid" > {{partner.Password}} </p>
+          <button ion-button item-end *ngIf="!valid" clear icon-only (click)="viewPass()">
+            <ion-icon name="ios-eye"></ion-icon>
+          </button>
+          <button ion-button item-end clear icon-only *ngIf="valid" (click)="hidePass()">
+            <ion-icon name="ios-eye-off"></ion-icon>
+          </button>
         </ion-item>
 
         <ion-item >

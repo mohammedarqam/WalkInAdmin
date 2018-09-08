@@ -19,7 +19,7 @@ export class MyApp {
   rootPage: any ;
 
   activePage: any;
-  pages: Array<{ title: string, component: any, icon: any }>;
+  pages: Array<{ title: string, component: any, icon: any, color : string }>;
 
   constructor(
   public platform: Platform,    
@@ -27,17 +27,17 @@ export class MyApp {
   ) {
     this.initializeApp();
     this.pages = [
-      { title: 'Home', component: HomePage, icon: "home" },
-      { title: 'Walk In Partners', component: PartnerAdminsPage, icon: "ios-contact" },
+      { title: 'DashBoard', component: HomePage, icon: "flash",color: "yellowi" },
+      { title: 'Walk In Partners', component: PartnerAdminsPage, icon: "ios-contact" ,color: "whiter"},
 
-      { title: 'Restaurants', component: ViewRestaurantsPage, icon: "md-pizza" },
-      { title: 'Restaurant Menus', component: ViewMenuPage, icon: "md-paper" },
+      { title: 'Restaurants', component: ViewRestaurantsPage, icon: "md-pizza",color: "whiter" },
+      { title: 'Restaurant Menus', component: ViewMenuPage, icon: "md-paper",color: "whiter" },
 
-      { title: 'Play Zones', component: ViewPlayZonePage, icon: "logo-steam" },
-      { title: 'Play Zone Games', component: ViewGamesPage, icon: "md-game-controller-b" },
+      { title: 'Play Zones', component: ViewPlayZonePage, icon: "logo-steam",color: "whiter" },
+      { title: 'Play Zone Games', component: ViewGamesPage, icon: "md-game-controller-b",color: "whiter" },
 
-      { title: 'Users', component: UsersPage, icon: "ios-people" },
-      { title: 'Notifications', component: NotificationMainPage, icon: "ios-mail" },
+      { title: 'Users', component: UsersPage, icon: "ios-people",color: "whiter" },
+      { title: 'Notifications', component: NotificationMainPage, icon: "ios-mail",color: "whiter" },
     ];
     this.activePage = this.pages[1];
   }

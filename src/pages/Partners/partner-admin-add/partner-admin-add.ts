@@ -90,14 +90,14 @@ export class PartnerAdminAddPage {
 
   checkData(){
     if(this.Name){
-      if(this.Contact){
+      if(this.Contact.length===10){
         if(this.Email){
           this.addPartner();
         }else{
           this.presentToast("Enter Email");
         }
       }else{
-        this.presentToast("Enter Phone Number")
+        this.presentToast("Phone Number Invalid")
       }
     }else{
       this.presentToast("Enter Name");

@@ -13,7 +13,6 @@ export class PartnerDeletePage {
 
   pName : string;
   partner = this.navParams.get("partner");
-
   partnerRef = firebase.database().ref("PartnerAdmins").child(this.partner.key);
 
 
@@ -28,7 +27,7 @@ export class PartnerDeletePage {
   del(){
     this.partnerRef.remove().then(()=>{
       this.presentToast("Partner Removed");
-
+      this.close();
     })
   }
 
@@ -44,8 +43,8 @@ export class PartnerDeletePage {
   close(){
     this.viewCtrl.dismiss();
   }
-  capsName(Name){
-    this.partner.Name = Name.toUpperCase();
+  capsName(pName){
+    this.pName = pName.toUpperCase();
   }
 
 }
