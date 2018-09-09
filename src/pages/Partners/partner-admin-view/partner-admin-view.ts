@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, AlertController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, AlertController, ToastController, ModalController } from 'ionic-angular';
 import * as firebase from 'firebase';
+import { RestaurantDetailsPage } from '../../Partner Restaurants/Restaurants/restaurant-details/restaurant-details';
 
 @IonicPage()
 @Component({
@@ -17,15 +18,37 @@ export class PartnerAdminViewPage {
   public adminEmail : string;
   public adminPass : string;
 
+  stores : Array<any> = [];
+
+  partnerRef = firebase.database().ref("PartnerAdmins").child(this.partner.key);
+
   constructor(
   public navCtrl: NavController, 
   public navParams: NavParams,
   public toastCtrl : ToastController,
+  public modalCtrl : ModalController,
   public alertCtrl : AlertController,
   public viewCtrl : ViewController,
   ) {
+    this.getStores();
     this.getAdminDetails();
   }
+
+  getStores(){
+
+    this.partnerRef.child("Stores").once('value',itemSnapshot=>{
+      this.stores = [];
+      itemSnapshot.forEach(itemSnap =>{
+        firebase.database().ref("Restaurants").child(itemSnap.key).once('value',item=>{
+          this.stores.push(item.val());
+        })
+        return false;
+      }) ;
+    });
+  
+  }
+
+
 
   getAdminDetails(){
     this.adminRef.once('value',itemSnap=>{
@@ -86,5 +109,12 @@ export class PartnerAdminViewPage {
       });
       toast.present();
     }
-  
+
+    viewStore(store){
+
+    let storeView = this.modalCtrl.create(RestaurantDetailsPage,{restaurant : store},{enableBackdropDismiss : false});
+    storeView.present();
+    
+    }
+
   }

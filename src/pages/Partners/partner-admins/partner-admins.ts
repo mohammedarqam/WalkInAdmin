@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, PopoverController , NavParams, ModalController } from 'ionic-angular';
 import { PartnerAdminAddPage } from '../partner-admin-add/partner-admin-add';
-import { PartnerAdminEditPage } from '../partner-admin-edit/partner-admin-edit';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

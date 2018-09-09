@@ -16,18 +16,17 @@ export class HomePage {
   playzones : number = 0;
 
   partnersRef = firebase.database().ref("PartnerAdmins");
-  restaurantsRef = firebase.database().ref("Resataurants");
+  restaurantsRef = firebase.database().ref("Restaurants");
   playzonesRef = firebase.database().ref("PlayZones");
 
   constructor(
   public navCtrl: NavController,
   private menuCtrl : MenuController) {
     this.menuCtrl.enable(true);
+    this.getPartners();
+    this.getRestaurants();
   }
 
-  ionViewWillEnter(){
-    this.getPartners();
-  }
 
 
   getPartners(){

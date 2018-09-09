@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar color="primary">
-      <ion-title>Add Partner</ion-title>
+      <ion-title>Partner Details</ion-title>
       <ion-buttons end>
         <button ion-button outline (click)="close()">Done</button>
       </ion-buttons>
@@ -50,6 +50,26 @@
         
       </ion-card-content>
     </ion-card>
+
+    <ion-card *ngFor="let store of stores" >
+      <ion-navbar color="primary" >
+        <ion-title>{{store.RestaurantName}} </ion-title>
+      <ion-buttons end>
+        <button ion-button outline (click)="viewStore(store)">View</button>
+      </ion-buttons>
+      </ion-navbar>
+      <ion-card-content>
+
+        <ion-item >
+          <p ion-text item-start color="primary">Address</p>
+          <p item-end > {{store.Address}} </p>
+        </ion-item>
+
+
+        
+      </ion-card-content>
+    </ion-card>
+
 
   </ion-content>
   

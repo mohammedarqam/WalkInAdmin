@@ -36,6 +36,8 @@ import { PartnerAdminOptionsPage } from '../pages/Partners/partner-admin-options
 import { PartnerAdminViewPage } from '../pages/Partners/partner-admin-view/partner-admin-view';
 import { PartnerDeletePage } from '../pages/Partners/partner-delete/partner-delete';
 import { CountoModule }  from 'angular2-counto';
+import { DelRestaurantPage } from '../pages/Partner Restaurants/Restaurants/del-restaurant/del-restaurant';
+import { RestOptionViewPage } from '../pages/Partner Restaurants/Restaurants/rest-option-view/rest-option-view';
 
   export const firebaseCred = {
   apiKey: "AIzaSyAE8aWWXXnIemdrHUPA7e93GqA5hNEK1SU",
@@ -78,6 +80,8 @@ import { CountoModule }  from 'angular2-counto';
     PartnerAdminOptionsPage,
     PartnerAdminViewPage,
     PartnerDeletePage,
+    DelRestaurantPage,
+    RestOptionViewPage,
 
   ],
   imports: [
@@ -119,6 +123,8 @@ import { CountoModule }  from 'angular2-counto';
     PartnerAdminOptionsPage,
     PartnerAdminViewPage,
     PartnerDeletePage,
+    DelRestaurantPage,
+    RestOptionViewPage,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

@@ -1,18 +1,99 @@
-<!--
-  Generated template for the RestaurantDetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>restaurantDetails</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Restaurant Details </ion-title>
+    <ion-buttons end>
+      <button ion-button outline (click)="close()">Done</button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+
+
+    <ion-card >
+        <ion-card-content>
+          
+          <ion-item >
+            <p ion-text item-start color="primary">Name</p>
+            <p item-end > {{restaurant.RestaurantName}} </p>
+          </ion-item>
+   
+          <ion-item >
+            <p ion-text item-start color="primary">Email</p>
+            <p item-end > {{restaurant.RestaurantEmail}} </p>
+          </ion-item>
+   
+          <ion-item >
+            <p ion-text item-start color="primary">Percentage to WalkIn</p>
+            <p item-end > {{restaurant.ProfitToLoyalPercentage}}% </p>
+          </ion-item>
+
+          <ion-item >
+            <p ion-text item-start color="primary">Address</p>
+            <p item-end > {{restaurant.Address}} </p>
+          </ion-item>
+   
+          <ion-item >
+            <p ion-text item-start color="primary">Phone</p>
+            <p item-end > {{restaurant.RestaurantContact}} </p>
+          </ion-item>
+ 
+          <ion-item >
+            <p ion-text item-start color="primary">Password</p>
+            <p item-end *ngIf="!valid" > ******** </p>
+            <p item-end *ngIf="valid" > {{restaurant.RestaurantPassword}} </p>
+            <button ion-button item-end *ngIf="!valid" clear icon-only (click)="viewPass()">
+              <ion-icon name="ios-eye"></ion-icon>
+            </button>
+            <button ion-button item-end clear icon-only *ngIf="valid" (click)="hidePass()">
+              <ion-icon name="ios-eye-off"></ion-icon>
+            </button>
+          </ion-item>
+  
+
+
+          <ion-item >
+            <p ion-text item-start color="primary">Minimum Visits</p>
+            <p item-end > {{restaurant.VisitsL}} </p>
+          </ion-item>
+  
+  
+          
+        </ion-card-content>
+      </ion-card>
+      
+      <ion-card>
+        <ion-navbar color="primary" >
+          <ion-title>Partner</ion-title>
+          <ion-buttons end>
+            <button ion-button outline (click)="viewPartner()">View Partner</button>
+          </ion-buttons>
+        </ion-navbar>
+        <ion-card-content>
+          
+          <ion-item>
+            <p ion-text item-start color="primary">Name</p>
+            <p item-end >{{partner.Name}}</p>
+          </ion-item>
+          <ion-item>
+            <p ion-text item-start color="primary">Email</p>
+            <p item-end >{{partner.Email}}</p>
+          </ion-item>
+           <ion-item>
+            <p ion-text item-start color="primary">Contact</p>
+            <p item-end >{{partner.Phone}}</p>
+          </ion-item>
+          <ion-item>
+            <p ion-text item-start color="primary">Extra Details</p>
+            <p item-end >{{partner.ExtraDetails}}</p>
+          </ion-item>
+            
+
+
+        </ion-card-content>
+      </ion-card>
+
+
 
 </ion-content>

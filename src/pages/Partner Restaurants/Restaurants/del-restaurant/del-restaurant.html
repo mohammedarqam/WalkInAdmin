@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar color="danger">
+      <ion-title>Delete Restaurant</ion-title>
+      <ion-buttons end>
+        <button ion-button outline (click)="close()">CANCEL</button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+    <ion-slides>
+      <ion-slide>
+        <h2 ion-text color="primary" >Enter "{{restaurant.RestaurantName}}" to delete</h2>
+        <ion-item class="content" >
+          <ion-label floating>Restaurant Name</ion-label>
+          <ion-input type="text" (ionChange)="capsName(rName)" [(ngModel)]="rName" autofocus ></ion-input>
+        </ion-item>
+    <button ion-button block color="danger" [disabled]="rName!=restaurant.RestaurantName" (click)="del()">DELETE</button>
+    </ion-slide>
+    </ion-slides>
+  </ion-content>
+  

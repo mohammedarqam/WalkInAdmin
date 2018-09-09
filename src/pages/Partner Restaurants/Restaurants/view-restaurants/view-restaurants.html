@@ -21,25 +21,34 @@
   </ion-row>
   </ion-grid>
   
-    <ion-grid>
+  <ion-grid>
       <ion-row>
-        <ion-col col-4 *ngFor="let rest of restaurants | async">
+        <ion-col col-3 *ngFor="let r of restaurants | async ">
           <ion-card>
-            <ion-card-content>
-              <ion-item>
-              <ion-card-title item-start >{{rest.RestaurantName}}</ion-card-title>
-              <button ion-button item-end color="primary" icon-only clear (click)="editRestaurant(rest.key)" >
-                <ion-icon name="create"  ></ion-icon>
+  
+            <ion-navbar class="titel" color="primary" >
+              <ion-title  >{{r.RestaurantName}}</ion-title>
+              <ion-buttons end>
+                <button ion-button clear (click)="viewOptions($event,r)" icon-only >
+                  <ion-icon name="md-more"></ion-icon>
                 </button>
-              </ion-item>
-              <button ion-button (click)="gtDetails(rest)">Details</button>
-              <button ion-button (click)="DueCollectionShow(rest)">Collection</button>
-            </ion-card-content>
-          </ion-card>
+              </ion-buttons>
+            </ion-navbar>
+          <ion-card-content>
+            <ion-item>
+              <ion-icon name="ios-jet" item-start color="primary"></ion-icon>
+              <p item-end > {{r.ProfitToLoyalPercentage}} %</p>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="md-call" item-start color="primary"></ion-icon>
+              <p item-end > {{r.RestaurantContact}} </p>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>
-
+  
 
 
   <ion-fab right bottom>

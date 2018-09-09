@@ -1,5 +1,12 @@
 <ion-header>
   <ion-navbar color="primary">
+    <ion-title>Add a Restaurant</ion-title>
+        <ion-buttons end>
+      <button ion-button outline (click)="close()" clear icon-only >
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,15 +14,8 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item no-lines class="content">
-    <h1 class="title">Add a Restaurant</h1>
-    </ion-item>
-
     <ion-card>
       <ion-card-content>
-        <ion-item>
-          <button item-end ion-button *ngIf="Name" color="danger" (click)="ClearI()" class="clearBtn()" >Clear</button>
-        </ion-item>
       <ion-grid>
     
         <ion-row>
@@ -31,16 +31,18 @@
           <ion-item>
           <ion-label stacked color="primary">
               <p ion-text color="danger" >*</p>
-              Contact Person Name</ion-label>
-          <ion-input type="text" (ionChange)="capsContactPerson(ContactPerson)" [(ngModel)]="ContactPerson"></ion-input>
+              Partner Name</ion-label>
+          <ion-select [(ngModel)]="Partner">
+            <ion-option *ngFor="let p of partners | async " [value]="p.key">{{p.Name}} </ion-option>
+          </ion-select>
         </ion-item>
       </ion-row>
       <ion-row>
          <ion-item>
               <ion-label stacked color="primary">
                   <p ion-text color="danger" >*</p>
-                  Mobile Contact</ion-label>
-              <ion-input type="number"  [(ngModel)]="PhoneNo"></ion-input>
+                  Restaurant Contact</ion-label>
+              <ion-input type="number"  [(ngModel)]="RestaurantContact"></ion-input>
           </ion-item>
         </ion-row>
         <ion-row>
@@ -51,14 +53,7 @@
                <ion-input type="text"  [(ngModel)]="Address"></ion-input>
            </ion-item>
          </ion-row>
-         <ion-row>
-          <ion-item>
-               <ion-label stacked color="primary">
-                   <p ion-text color="danger" >*</p>
-                   Email</ion-label>
-               <ion-input type="email" placeholder="This Email will be used to Log In" [(ngModel)]="Email"></ion-input>
-           </ion-item>
-         </ion-row>
+
          <ion-row>
           <ion-col >
             <ion-label stacked >Profit to Loyal</ion-label>
@@ -87,7 +82,7 @@
         </ion-row>
 
          <ion-row>
-          <button ion-button color="primary" [disabled]="!Name||!PhoneNo||!Address||!Email||!ContactPerson" block (click)="addConfirm()" >Add Restaurant</button>
+          <button ion-button color="primary" block  (click)="checkData()" >Add Restaurant</button>
         </ion-row>
       
         

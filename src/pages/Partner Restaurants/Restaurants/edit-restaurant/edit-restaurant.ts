@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 
 @IonicPage()
@@ -9,14 +9,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EditRestaurantPage {
 
-  restaurant  = this.navParams.get('restKey');
 
   constructor(
   public navCtrl: NavController, 
+  public viewCtrl : ViewController,
   public navParams: NavParams) {
   
-    console.log(this.restaurant);
   }
 
+  close(){
+    this.viewCtrl.dismiss();
+  }
 
 }

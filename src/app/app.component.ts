@@ -10,6 +10,7 @@ import { ViewPlayZonePage } from '../pages/Partner Playzones/PlayZones/view-play
 import { ViewGamesPage } from '../pages/Partner Playzones/Game Menus/view-games/view-games';
 import { LoginPage } from '../pages/Utility/login/login';
 import * as firebase from 'firebase';
+import { AddRestaurantPage } from '../pages/Partner Restaurants/Restaurants/add-restaurant/add-restaurant';
 
 @Component({
   templateUrl: 'app.html'
@@ -39,7 +40,7 @@ export class MyApp {
       { title: 'Users', component: UsersPage, icon: "ios-people",color: "whiter" },
       { title: 'Notifications', component: NotificationMainPage, icon: "ios-mail",color: "whiter" },
     ];
-    this.activePage = this.pages[0];
+    this.activePage = this.pages[2];
   }
 
   initializeApp() {
@@ -50,7 +51,7 @@ export class MyApp {
           itemSnapshot.forEach(itemSnap => {
             if(itemSnap.exists()){
               var welMsg = "Welcome"+" "+itemSnap.val().Name;
-              this.rootPage = HomePage;
+              this.rootPage = ViewRestaurantsPage;
               
               this.presentToast(welMsg);
             }

@@ -21,7 +21,6 @@ export class PartnerAdminOptionsPage {
   public navParams: NavParams,
   public viewCtrl : ViewController,
   ) {
-    console.log(this.partner);
   }
 
   view(){
