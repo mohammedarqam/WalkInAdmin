@@ -7,8 +7,7 @@ import { ViewRestaurantsPage } from '../pages/Partner Restaurants/Restaurants/vi
 import { NotificationMainPage } from '../pages/Utility/Notifications/notification-main/notification-main';
 import { LoginPage } from '../pages/Utility/login/login';
 import * as firebase from 'firebase';
-import { ViewMenuPage } from '../pages/Partner Restaurants/Restaurants/view-menu/view-menu';
-import { VendorViewNotificationsPage } from '../pages/Utility/Notifications/Vendor/vendor-view-notifications/vendor-view-notifications';
+import { FaqsViewPage } from '../pages/Utility/faqs-view/faqs-view';
 
 @Component({
   templateUrl: 'app.html'
@@ -36,6 +35,8 @@ export class MyApp {
 
       { title: 'Users', component: UsersPage, icon: "ios-people",color: "whiter" },
       { title: 'Notifications', component: NotificationMainPage, icon: "ios-mail",color: "whiter" },
+      { title: 'FAQs', component: FaqsViewPage, icon: "md-help",color: "whiter" },
+     
     ];
     this.activePage = this.pages[0];
   }

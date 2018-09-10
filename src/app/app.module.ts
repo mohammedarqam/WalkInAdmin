@@ -38,6 +38,7 @@ import { PlayZoneOptionsPage } from '../pages/Partner Playzones/PlayZones/play-z
 import { DelplayzonePage } from '../pages/Partner Playzones/PlayZones/delplayzone/delplayzone';
 import { ViewMenuPage } from '../pages/Partner Restaurants/Restaurants/view-menu/view-menu';
 import { MenuAnalysisPage } from '../pages/Partner Restaurants/Restaurants/menu-analysis/menu-analysis';
+import { FaqsViewPage } from '../pages/Utility/faqs-view/faqs-view';
 
   export const firebaseCred = {
   apiKey: "AIzaSyAE8aWWXXnIemdrHUPA7e93GqA5hNEK1SU",
@@ -82,7 +83,7 @@ import { MenuAnalysisPage } from '../pages/Partner Restaurants/Restaurants/menu-
     PlayZoneOptionsPage,
     DelplayzonePage,
     MenuAnalysisPage,
-
+    FaqsViewPage,
   ],
   imports: [
     BrowserModule,
@@ -125,6 +126,7 @@ import { MenuAnalysisPage } from '../pages/Partner Restaurants/Restaurants/menu-
     PlayZoneOptionsPage,
     DelplayzonePage,
     MenuAnalysisPage,
+    FaqsViewPage,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
