@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item no-lines class="content">
+  <h1 class="title" item-start>{{restaurant.RestaurantName}}</h1>
+  </ion-item>
+
+  
+
+
+<ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+        <ion-item>
+          <ion-label stacked color="primary">Menu Item Name</ion-label>
+          <ion-input type="text" [(ngModel)]="name" autofocus></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3>
+        <ion-item>
+          <ion-label stacked color="primary">Price</ion-label>
+          <ion-input type="number" [(ngModel)]="price"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3>
+        <ion-item>
+          <ion-label stacked color="primary">Type</ion-label>
+          <ion-select [(ngModel)]="type">
+            <ion-option value="Food">Food</ion-option>
+            <ion-option value="Drinks">Drinks</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col col-2>
+        <ion-item>
+        <button ion-button block (click)="addItem()">Add item</button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
+
+<button ion-button (click)="viewAnalysis()" class="maBtn" >View Analysis</button>
+
+<ion-navbar color="primary" >
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+        <ion-navbar color="primary" >
+          <ion-title>Item Name</ion-title>
+        </ion-navbar>
+      </ion-col>
+      <ion-col col-3>
+        <ion-navbar color="primary" >
+          <ion-title>Type</ion-title>
+        </ion-navbar>
+      </ion-col>
+      <ion-col col-3>
+        <ion-navbar color="primary" >
+          <ion-title>Price</ion-title>
+        </ion-navbar>
+      </ion-col>
+      <ion-col col-2>
+        <ion-navbar color="primary" >
+          <ion-title>Ordered</ion-title>
+        </ion-navbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-navbar>
+
+
+<ion-card>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row class="listi" *ngFor="let i of  (items | async)?.slice().reverse()" >
+        <ion-col col-4>
+          <ion-item>{{i.ItemName}}</ion-item>
+        </ion-col>
+        <ion-col col-3>
+          <ion-item>{{i.Type}}</ion-item>
+        </ion-col>
+        <ion-col col-3>
+          <ion-item>{{i.Price}}</ion-item>
+        </ion-col>
+        <ion-col col-2>
+          <ion-item>{{i.Ordered}}</ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
+
+
+</ion-content>

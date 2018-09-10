@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, PopoverController , NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, PopoverController , NavParams, ModalController, MenuController } from 'ionic-angular';
 import { PartnerAdminAddPage } from '../partner-admin-add/partner-admin-add';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
@@ -24,7 +24,10 @@ export class PartnerAdminsPage {
   public modalCtrl : ModalController,
   public popoverCtrl: PopoverController,
   public db : AngularFireDatabase,
+  public menuCtrl : MenuController,
   ) {
+    this.menuCtrl.enable(true);
+
     this.partnersRef =db.list('PartnerAdmins', ref=>ref.orderByChild("TimeStamp"));
 
     this.partners = this.partnersRef.snapshotChanges().pipe(

@@ -4,13 +4,11 @@ import { HomePage } from '../pages/Utility/home/home';
 import { UsersPage } from '../pages/Users/users/users';
 import { PartnerAdminsPage } from '../pages/Partners/partner-admins/partner-admins';
 import { ViewRestaurantsPage } from '../pages/Partner Restaurants/Restaurants/view-restaurants/view-restaurants';
-import { ViewMenuPage } from '../pages/Partner Restaurants/Menus/view-menu/view-menu';
 import { NotificationMainPage } from '../pages/Utility/Notifications/notification-main/notification-main';
-import { ViewPlayZonePage } from '../pages/Partner Playzones/PlayZones/view-play-zone/view-play-zone';
-import { ViewGamesPage } from '../pages/Partner Playzones/Game Menus/view-games/view-games';
 import { LoginPage } from '../pages/Utility/login/login';
 import * as firebase from 'firebase';
-import { AddRestaurantPage } from '../pages/Partner Restaurants/Restaurants/add-restaurant/add-restaurant';
+import { ViewMenuPage } from '../pages/Partner Restaurants/Restaurants/view-menu/view-menu';
+import { VendorViewNotificationsPage } from '../pages/Utility/Notifications/Vendor/vendor-view-notifications/vendor-view-notifications';
 
 @Component({
   templateUrl: 'app.html'
@@ -32,15 +30,14 @@ export class MyApp {
       { title: 'Walk In Partners', component: PartnerAdminsPage, icon: "ios-contact" ,color: "whiter"},
 
       { title: 'Restaurants', component: ViewRestaurantsPage, icon: "md-pizza",color: "whiter" },
-      { title: 'Restaurant Menus', component: ViewMenuPage, icon: "md-paper",color: "whiter" },
 
-      { title: 'Play Zones', component: ViewPlayZonePage, icon: "logo-steam",color: "whiter" },
-      { title: 'Play Zone Games', component: ViewGamesPage, icon: "md-game-controller-b",color: "whiter" },
+      // { title: 'Play Zones', component: ViewPlayZonePage, icon: "logo-steam",color: "whiter" },
+      // { title: 'Play Zone Games', component: ViewGamesPage, icon: "md-game-controller-b",color: "whiter" },
 
       { title: 'Users', component: UsersPage, icon: "ios-people",color: "whiter" },
       { title: 'Notifications', component: NotificationMainPage, icon: "ios-mail",color: "whiter" },
     ];
-    this.activePage = this.pages[2];
+    this.activePage = this.pages[0];
   }
 
   initializeApp() {
@@ -51,7 +48,7 @@ export class MyApp {
           itemSnapshot.forEach(itemSnap => {
             if(itemSnap.exists()){
               var welMsg = "Welcome"+" "+itemSnap.val().Name;
-              this.rootPage = ViewRestaurantsPage;
+              this.rootPage = HomePage;
               
               this.presentToast(welMsg);
             }

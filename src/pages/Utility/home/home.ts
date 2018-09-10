@@ -13,11 +13,9 @@ export class HomePage {
 
   partners : number = 0;
   restaurants : number = 0;
-  playzones : number = 0;
 
   partnersRef = firebase.database().ref("PartnerAdmins");
   restaurantsRef = firebase.database().ref("Restaurants");
-  playzonesRef = firebase.database().ref("PlayZones");
 
   constructor(
   public navCtrl: NavController,
@@ -41,10 +39,5 @@ export class HomePage {
     })
   }
 
-  getplayzones(){
-    this.playzonesRef.on('value',item=>{
-      this.playzones = item.numChildren();
-    })
-  }
 
 }

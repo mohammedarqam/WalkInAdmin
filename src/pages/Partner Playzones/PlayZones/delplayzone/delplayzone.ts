@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the UserAddNotificationsPage page.
+ * Generated class for the DelplayzonePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-user-add-notifications',
-  templateUrl: 'user-add-notifications.html',
+  selector: 'page-delplayzone',
+  templateUrl: 'delplayzone.html',
 })
-export class UserAddNotificationsPage {
+export class DelplayzonePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserAddNotificationsPage');
+    console.log('ionViewDidLoad DelplayzonePage');
   }
 
 }

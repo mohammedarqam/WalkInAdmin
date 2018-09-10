@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import * as firebase from 'firebase';
+import moment from  'moment';
 
-/**
- * Generated class for the VendorViewNotificationsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -15,11 +15,62 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class VendorViewNotificationsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+
+  title :string;
+  descript : number;
+
+  notiRef: AngularFireList<any>;
+  notis : Observable<any[]>;
+
+
+  constructor(
+  public navCtrl: NavController, 
+  public toastCtrl : ToastController,
+  public db : AngularFireDatabase,
+  public navParams: NavParams
+  ) {
+    this.notiRef =db.list(`Notifications/Vendor/`, ref=>ref.orderByChild("TimeStamp"));
+
+    this.notis = this.notiRef.snapshotChanges().pipe(
+      map(changes => 
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    );
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VendorViewNotificationsPage');
+  checkData(){
+    if(this.title){
+      if(this.descript){
+        this.addNoti();
+      }else{
+        this.presentToast("Provide a description")
+      }
+    }else{
+      this.presentToast("Title not provided")
+    }
   }
 
+addNoti(){
+  firebase.database().ref("Notifications").child("Vendor").push({
+    Title : this.title,
+    Description : this.descript,
+    Status : "Pending",
+    TimeStamp : moment().format()
+  }).then(()=>{
+    this.title = null;
+    this.descript = null;
+    this.presentToast("Notification Added")
+  })
+}
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 4000,
+      position :"bottom",
+      showCloseButton: false,
+    });
+    toast.present();
+  }
 }

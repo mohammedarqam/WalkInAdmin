@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { VendorViewNotificationsPage } from '../Vendor/vendor-view-notifications/vendor-view-notifications';
+import { UserViewNotificationsPage } from '../User/user-view-notifications/user-view-notifications';
 
-/**
- * Generated class for the NotificationMainPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +11,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NotificationMainPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+  public navCtrl: NavController, 
+  public navParams: NavParams
+  ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NotificationMainPage');
+  userNoti(){
+    this.navCtrl.push(UserViewNotificationsPage)
+  }
+  vendorNoti(){
+    this.navCtrl.push(VendorViewNotificationsPage)
   }
 
 }

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, ViewController, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, PopoverController } from 'ionic-angular';
 import { AddRestaurantPage } from '../add-restaurant/add-restaurant';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { RestOptionViewPage } from '../rest-option-view/rest-option-view';
+import { ViewMenuPage } from '../view-menu/view-menu';
 
 @IonicPage()
 @Component({
@@ -20,7 +21,6 @@ export class ViewRestaurantsPage {
   constructor(
   public navCtrl: NavController, 
   public modalCtrl : ModalController,
-  public viewCtrl : ViewController,
   public popoverCtrl: PopoverController,
   public db : AngularFireDatabase,
   public navParams: NavParams) {
@@ -45,10 +45,12 @@ export class ViewRestaurantsPage {
     });
 }
 
+viewMenu(r){
+  this.navCtrl.push(ViewMenuPage,{restaurant : r});
+}
 
-
-close(){
-  this.viewCtrl.dismiss();
+viewUsers(r){
+  // this.navCtrl.push(ViewMenuPage,{restaurant : r});
 }
 
 }
