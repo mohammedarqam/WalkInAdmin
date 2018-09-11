@@ -13,9 +13,11 @@ export class HomePage {
 
   partners : number = 0;
   restaurants : number = 0;
+  banners : number = 0;
 
   partnersRef = firebase.database().ref("PartnerAdmins");
   restaurantsRef = firebase.database().ref("Restaurants");
+  bannersRef = firebase.database().ref("Banners");
 
   constructor(
   public navCtrl: NavController,
@@ -23,6 +25,7 @@ export class HomePage {
     this.menuCtrl.enable(true);
     this.getPartners();
     this.getRestaurants();
+    this.getBanners();
   }
 
 
@@ -39,5 +42,10 @@ export class HomePage {
     })
   }
 
+  getBanners(){
+    this.bannersRef.on('value',item=>{
+      this.banners = item.numChildren();
+    })
+  }
 
 }

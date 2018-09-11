@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/Utility/login/login';
 import * as firebase from 'firebase';
 import { FaqsViewPage } from '../pages/Utility/faqs-view/faqs-view';
 import { BannersViewPage } from '../pages/Banners/banners-view/banners-view';
+import { ViewFoodCategoriesPage } from '../pages/Food Categories/view-food-categories/view-food-categories';
 
 @Component({
   templateUrl: 'app.html'
@@ -37,6 +38,7 @@ export class MyApp {
       { title: 'Users', component: UsersPage, icon: "ios-people",color: "whiter" },
       { title: 'Notifications', component: NotificationMainPage, icon: "ios-mail",color: "whiter" },
       { title: 'Banners', component: BannersViewPage, icon: "md-images",color: "whiter" },
+      { title: 'Food Categories', component: ViewFoodCategoriesPage, icon: "md-flame",color: "whiter" },
       { title: 'FAQs', component: FaqsViewPage, icon: "md-help",color: "whiter" },
      
     ];
@@ -47,15 +49,13 @@ export class MyApp {
     this.platform.ready().then(() => {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-        firebase.database().ref("WalkInAdmin").once('value',itemSnapshot=>{
-          itemSnapshot.forEach(itemSnap => {
+        firebase.database().ref("WalkInAdmin").child(user.uid).once('value',itemSnap=>{
             if(itemSnap.exists()){
               var welMsg = "Welcome"+" "+itemSnap.val().Name;
-              this.rootPage = HomePage;
+              this.rootPage = ViewFoodCategoriesPage;
               
               this.presentToast(welMsg);
             }
-      });
     });
       }
       else{
