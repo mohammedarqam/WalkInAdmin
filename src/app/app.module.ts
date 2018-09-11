@@ -39,6 +39,8 @@ import { DelplayzonePage } from '../pages/Partner Playzones/PlayZones/delplayzon
 import { ViewMenuPage } from '../pages/Partner Restaurants/Restaurants/view-menu/view-menu';
 import { MenuAnalysisPage } from '../pages/Partner Restaurants/Restaurants/menu-analysis/menu-analysis';
 import { FaqsViewPage } from '../pages/Utility/faqs-view/faqs-view';
+import { BannersViewPage } from '../pages/Banners/banners-view/banners-view';
+import { AddBannersPage } from '../pages/Banners/add-banners/add-banners';
 
   export const firebaseCred = {
   apiKey: "AIzaSyAE8aWWXXnIemdrHUPA7e93GqA5hNEK1SU",
@@ -84,6 +86,8 @@ import { FaqsViewPage } from '../pages/Utility/faqs-view/faqs-view';
     DelplayzonePage,
     MenuAnalysisPage,
     FaqsViewPage,
+    BannersViewPage,
+    AddBannersPage
   ],
   imports: [
     BrowserModule,
@@ -127,6 +131,8 @@ import { FaqsViewPage } from '../pages/Utility/faqs-view/faqs-view';
     DelplayzonePage,
     MenuAnalysisPage,
     FaqsViewPage,
+    BannersViewPage,
+    AddBannersPage,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

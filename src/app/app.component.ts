@@ -8,6 +8,7 @@ import { NotificationMainPage } from '../pages/Utility/Notifications/notificatio
 import { LoginPage } from '../pages/Utility/login/login';
 import * as firebase from 'firebase';
 import { FaqsViewPage } from '../pages/Utility/faqs-view/faqs-view';
+import { BannersViewPage } from '../pages/Banners/banners-view/banners-view';
 
 @Component({
   templateUrl: 'app.html'
@@ -35,6 +36,7 @@ export class MyApp {
 
       { title: 'Users', component: UsersPage, icon: "ios-people",color: "whiter" },
       { title: 'Notifications', component: NotificationMainPage, icon: "ios-mail",color: "whiter" },
+      { title: 'Banners', component: BannersViewPage, icon: "md-images",color: "whiter" },
       { title: 'FAQs', component: FaqsViewPage, icon: "md-help",color: "whiter" },
      
     ];
