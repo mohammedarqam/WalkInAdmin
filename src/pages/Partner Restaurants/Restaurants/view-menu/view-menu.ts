@@ -23,6 +23,9 @@ export class ViewMenuPage {
   menuRef: AngularFireList<any>;
   items: Observable<any[]>;
 
+  catRef: AngularFireList<any>;
+  cats: Observable<any[]>;
+
 
   constructor(
   public navCtrl: NavController, 
@@ -37,6 +40,16 @@ export class ViewMenuPage {
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     );
+
+    this.catRef =db.list(`Food Categories`);
+
+    this.cats = this.catRef.snapshotChanges().pipe(
+      map(changes => 
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    );
+
+
   }
 
   checkData(){

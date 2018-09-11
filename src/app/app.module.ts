@@ -43,6 +43,8 @@ import { BannersViewPage } from '../pages/Banners/banners-view/banners-view';
 import { AddBannersPage } from '../pages/Banners/add-banners/add-banners';
 import { ViewFoodCategoriesPage } from '../pages/Food Categories/view-food-categories/view-food-categories';
 import { AddFoodCategoriesPage } from '../pages/Food Categories/add-food-categories/add-food-categories';
+import { PackagesPage } from '../pages/Packages/packages/packages';
+import { AddPackagesPage } from '../pages/Packages/add-packages/add-packages';
 
   export const firebaseCred = {
   apiKey: "AIzaSyAE8aWWXXnIemdrHUPA7e93GqA5hNEK1SU",
@@ -92,6 +94,8 @@ import { AddFoodCategoriesPage } from '../pages/Food Categories/add-food-categor
     AddBannersPage,
     ViewFoodCategoriesPage,
     AddFoodCategoriesPage,
+    PackagesPage,
+    AddPackagesPage,
   ],
   imports: [
     BrowserModule,
@@ -139,6 +143,8 @@ import { AddFoodCategoriesPage } from '../pages/Food Categories/add-food-categor
     AddBannersPage,
     ViewFoodCategoriesPage,
     AddFoodCategoriesPage,
+    PackagesPage,
+    AddPackagesPage,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

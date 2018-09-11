@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>Add a Food Categoty</ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-only (click)="close()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label  floating>Package Name</ion-label>
+        <ion-input type="text" [(ngModel)]="name" autofocus ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Package Price</ion-label>
+        <ion-input type="number" [(ngModel)]="price"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>No. of People</ion-label>
+        <ion-select [(ngModel)]="nop" > 
+          <ion-option value="2">2</ion-option>
+          <ion-option value="4">4</ion-option>
+          <ion-option value="6">6</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Type of Package</ion-label>
+        <ion-select [(ngModel)]="typeOfPack"  >
+        <ion-option value="Couple">Couple</ion-option>
+        <ion-option value="Friends">Friends</ion-option>
+        <ion-option value="Family">Family</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Restaurant</ion-label>
+        <ion-select [(ngModel)]="Prestaurant" (ionChange)="getMenu()" >
+          <ion-option *ngFor="let r of restaurants | async" [value]="r.key" >{{r.RestaurantName}} </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Select Items</ion-label>
+        <ion-select [(ngModel)]="PItems" multiple="true"  >
+          <ion-option *ngFor="let i of items | async" [value]="i" >{{i.ItemName}} </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Extra Items</ion-label>
+        <ion-input type="text" [(ngModel)]="ei"></ion-input>
+        <button ion-button clear small item-end (click)="atEI()">Add</button>
+      </ion-item>
+
+
+      <ion-item class="extraBar"   >
+        Extra Items
+      </ion-item>
+          <ol>
+            <ion-item *ngFor="let iii of ExtraItems; let i = index" >
+            <li item-start >{{iii}} </li>
+            <ion-icon name="md-remove-circle" color="danger" item-end (click)="rmEI(i)" ></ion-icon>
+            </ion-item>
+          </ol>
+
+
+
+
+      <button ion-button block (click)="checkData()">Add</button>
+
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

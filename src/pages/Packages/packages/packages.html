@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4 >
+  <ion-item no-lines class="content">
+  <h1 class="title" item-start>Packages</h1>
+  </ion-item>
+  </ion-col>
+  <ion-col col-6 push-2 >
+  <ion-searchbar item-end animated="true" placeholder="Search a Restaurant" 
+  [(ngModel)]="searchBar" (ionInput)="searchFun(searchBar)"></ion-searchbar>
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3 *ngFor="let p of packages | async ">
+        <ion-card>
+
+          <ion-navbar class="titel" color="primary" >
+            <ion-title  >{{p.Name}}</ion-title>
+            <ion-buttons end>
+              <button ion-button clear (click)="viewOptions($event,p)" icon-only >
+                <ion-icon name="md-more"></ion-icon>
+              </button>
+            </ion-buttons>
+          </ion-navbar>
+
+          <ion-card-content>
+            <ion-item>
+              <p ion-text item-start color="primary">Price</p>
+              <p item-end >Rs. {{p.Price}} /- </p>
+            </ion-item>
+            <ion-item>
+              <p ion-text item-start color="primary">People</p>
+              <p item-end > {{p.NoOfPeople}} </p>
+            </ion-item>
+            <ion-item>
+              <p ion-text item-start color="primary">Type</p>
+              <p item-end > {{p.Type}} </p>
+            </ion-item>
+          </ion-card-content>
+      </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+<ion-fab right bottom>
+  <button ion-fab color="danger" (click)="gtAddPackage()" >
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>
+
+</ion-content>

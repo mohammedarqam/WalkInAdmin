@@ -16,6 +16,7 @@ export class ViewFoodCategoriesPage {
   catsRef: AngularFireList<any>;
   cats: Observable<any[]>;
 
+  searchBar : string;
 
   constructor(
   public navCtrl: NavController, 
@@ -23,22 +24,37 @@ export class ViewFoodCategoriesPage {
   public modalCtrl : ModalController,
   public navParams: NavParams
   ) {
-    this.catsRef =db.list('Food Categories');
+    this.getCats();
+  }
+
+  getCats(){
+    this.catsRef =this.db.list('Food Categories');
 
     this.cats = this.catsRef.snapshotChanges().pipe(
       map(changes => 
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     );
-  
-  }
 
+  }
 
   gtAddCategory(){
     let catsAdd = this.modalCtrl.create(AddFoodCategoriesPage,null,{enableBackdropDismiss : false});
     catsAdd.present();
   }
 
+  searchFun(searchBar){
+    if(!searchBar){
+      this.getCats();
+    }else{
+    this.catsRef =this.db.list('Food Categories', ref=>ref.child("Name").equalTo(searchBar));
 
+    this.cats = this.catsRef.snapshotChanges().pipe(
+      map(changes => 
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    );
+      }
+  }
 
 }

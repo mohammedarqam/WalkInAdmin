@@ -33,14 +33,13 @@
         <ion-item>
           <ion-label stacked color="primary">Type</ion-label>
           <ion-select [(ngModel)]="type">
-            <ion-option value="Food">Food</ion-option>
-            <ion-option value="Drinks">Drinks</ion-option>
+            <ion-option *ngFor="let c of cats |async "  [value]="c.Name">{{c.Name}}</ion-option>
           </ion-select>
         </ion-item>
       </ion-col>
       <ion-col col-2>
         <ion-item>
-        <button ion-button block (click)="addItem()">Add item</button>
+        <button ion-button block (click)="checkData()">Add item</button>
         </ion-item>
       </ion-col>
     </ion-row>

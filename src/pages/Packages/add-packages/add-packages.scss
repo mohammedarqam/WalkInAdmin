@@ -1,0 +1,21 @@
+page-add-packages {
+    ion-input {
+        border-bottom: 1px solid map-get($colors, primary);
+        font-size: 110% ;
+    }
+    ion-select {
+        border-bottom: 1px solid map-get($colors, primary);
+        font-size: 110% ;
+    }
+    ion-item{
+        ion-label{
+            font-size: 110% !important ;
+            font-weight: 500;
+        }
+    }
+.extraBar{
+    margin-top: 15px;
+    color : map-get($colors,primary);
+    font-weight: bold;
+}
+}
