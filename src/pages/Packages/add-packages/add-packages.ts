@@ -136,4 +136,11 @@ export class AddPackagesPage {
   rmEI(i){
     this.ExtraItems.splice(i,1);
   }
+
+
+  capsName(name){
+    this.name = name.toUpperCase();
+  }
+  
 }
+

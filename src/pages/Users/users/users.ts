@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { UserOptionsPage } from '../user-options/user-options';
 
-/**
- * Generated class for the UsersPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -15,11 +12,72 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UsersPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  usersRef = this.db.list('Users', ref=>ref.orderByChild("TimeStamp"));
+  users: Array<any> = [];
+  usersLoaded: Array<any> = [];
+
+
+  constructor(
+  public navCtrl: NavController, 
+  public db : AngularFireDatabase,
+  public popoverCtrl : PopoverController,
+  public navParams: NavParams
+  ) {
+    this.getUsers();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UsersPage');
+
+
+  getUsers(){
+    this.usersRef.snapshotChanges().subscribe(snap=>{
+      let tempArray = [];
+      snap.forEach(snp=>{
+        let temp : any = snp.payload.val();
+        temp.key = snp.key;
+        tempArray.push(temp);
+      })
+      this.users = tempArray;
+      this.usersLoaded = tempArray;
+    })
+
   }
+
+  initializeItems(): void {
+    this.users = this.usersLoaded;
+  }
+  getItems(searchbar) {
+    this.initializeItems();
+    let q = searchbar;
+    if (!q) {
+      return;
+    }
+    this.users = this.users.filter((v) => {
+      if((v.Name || v.Phone || v.Email) && q) {
+        if (
+          (v.Name.toLowerCase().indexOf(q.toLowerCase()) > -1)
+          ||(v.Phone.toLowerCase().indexOf(q.toLowerCase()) > -1)
+          ||(v.Email.toLowerCase().indexOf(q.toLowerCase()) > -1)
+          ) {
+          return true;
+        }
+        return false;
+      }
+    });
+  }
+
+
+
+
+
+
+  viewOptions(myEvent,u){
+    let popover = this.popoverCtrl.create(UserOptionsPage,{user : u});
+    popover.present({
+      ev: myEvent
+    });
+}
+
+
+
 
 }

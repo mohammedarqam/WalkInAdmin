@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, PopoverController } from 'ionic-angular';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { AddPackagesPage } from '../add-packages/add-packages';
 import { PackageOptionsPage } from '../package-options/package-options';
 
@@ -14,8 +12,9 @@ import { PackageOptionsPage } from '../package-options/package-options';
 })
 export class PackagesPage {
 
-  packagesRef: AngularFireList<any>;
-  packages: Observable<any[]>;
+  packagesRef = this.db.list('Packages', ref=>ref.orderByChild("TimeStamp"));
+  packages: Array<any> = [];
+  packagesLoaded: Array<any> = [];
 
 
   constructor(
@@ -25,15 +24,49 @@ export class PackagesPage {
     public modalCtrl : ModalController,
     public navParams: NavParams
     ) {
-    this.packagesRef =db.list('Packages', ref=>ref.orderByChild("TimeStamp"));
-
-    this.packages = this.packagesRef.snapshotChanges().pipe(
-      map(changes => 
-        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      )
-    );
+      this.getPackages();
+    }
   
-  }
+  
+  
+    getPackages(){
+      this.packagesRef.snapshotChanges().subscribe(snap=>{
+        let tempArray = [];
+        snap.forEach(snp=>{
+          let temp : any = snp.payload.val();
+          temp.key = snp.key;
+          tempArray.push(temp);
+        })
+        this.packages = tempArray;
+        this.packagesLoaded = tempArray;
+      })
+  
+    }
+  
+    initializeItems(): void {
+      this.packages = this.packagesLoaded;
+    }
+    getItems(searchbar) {
+      this.initializeItems();
+      let q = searchbar;
+      if (!q) {
+        return;
+      }
+      this.packages = this.packages.filter((v) => {
+        if((v.Name || v.NoOfPeople || v.Type) && q) {
+          if (
+            (v.Name.toLowerCase().indexOf(q.toLowerCase()) > -1)
+            ||(v.NoOfPeople.toLowerCase().indexOf(q.toLowerCase()) > -1)
+            ||(v.Type.toLowerCase().indexOf(q.toLowerCase()) > -1)
+            ) {
+            return true;
+          }
+          return false;
+        }
+      });
+    }
+  
+    
 
 
 

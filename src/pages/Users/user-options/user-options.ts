@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { UserRestaurantsPage } from '../user-restaurants/user-restaurants';
+import { ViewCartPage } from '../view-cart/view-cart';
+import { UserDetailsPage } from '../user-details/user-details';
+import { UserBalancesPage } from '../user-balances/user-balances';
 
-/**
- * Generated class for the UserOptionsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +13,42 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UserOptionsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user = this.navParams.get("user");
+
+  constructor(
+  public navCtrl: NavController, 
+  public viewCtrl : ViewController,
+  public modalCtrl : ModalController,
+  public navParams: NavParams
+  ) {
+    console.log(this.user);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UserOptionsPage');
+  viewRestaurant(){
+    let partnerView = this.modalCtrl.create(UserRestaurantsPage,{user : this.user},{enableBackdropDismiss : false});
+    partnerView.present();
+    this.close();
+  }
+
+  viewCart(){
+    let partnerView = this.modalCtrl.create(ViewCartPage,{user : this.user},{enableBackdropDismiss : false});
+    partnerView.present();
+    this.close();
+  }
+
+  viewBalances(){
+    let partnerView = this.modalCtrl.create(UserBalancesPage,{user : this.user},{enableBackdropDismiss : false});
+    partnerView.present();
+    this.close();
+  }
+
+  viewDetails(){
+    let partnerView = this.modalCtrl.create(UserDetailsPage,{user : this.user},{enableBackdropDismiss : false});
+    partnerView.present();
+    this.close();
+  }
+  close(){
+    this.viewCtrl.dismiss();
   }
 
 }

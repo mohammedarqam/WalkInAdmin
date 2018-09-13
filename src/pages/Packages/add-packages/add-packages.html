@@ -16,7 +16,7 @@
     <ion-card-content>
       <ion-item>
         <ion-label  floating>Package Name</ion-label>
-        <ion-input type="text" [(ngModel)]="name" autofocus ></ion-input>
+        <ion-input type="text" [(ngModel)]="name" (ionChange)="capsName(name)" autofocus ></ion-input>
       </ion-item>
 
       <ion-item>

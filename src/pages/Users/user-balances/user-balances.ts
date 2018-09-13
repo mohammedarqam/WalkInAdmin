@@ -6,10 +6,10 @@ import * as firebase from 'firebase';
 
 @IonicPage()
 @Component({
-  selector: 'page-user-restaurants',
-  templateUrl: 'user-restaurants.html',
+  selector: 'page-user-balances',
+  templateUrl: 'user-balances.html',
 })
-export class UserRestaurantsPage {
+export class UserBalancesPage {
 
 
   user = this.navParams.get("user");
@@ -26,6 +26,7 @@ export class UserRestaurantsPage {
   close(){
     this.viewCtrl.dismiss();
   }
+
 
 
 }

@@ -52,5 +52,8 @@ export class AddFoodCategoriesPage {
   });
   toast.present();
 }
+capsName(name){
+  this.name = name.toUpperCase();
+}
 
 }

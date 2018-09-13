@@ -15,8 +15,9 @@ import { ViewMenuPage } from '../view-menu/view-menu';
 export class ViewRestaurantsPage {
 
 
-  restaurantsRef: AngularFireList<any>;
-  restaurants: Observable<any[]>;
+  restaurantsRef = this.db.list('Restaurants', ref=>ref.orderByChild("TimeStamp"));
+  restaurants: Array<any> = [];
+  restaurantsLoaded: Array<any> = [];
 
   constructor(
   public navCtrl: NavController, 
@@ -24,13 +25,47 @@ export class ViewRestaurantsPage {
   public popoverCtrl: PopoverController,
   public db : AngularFireDatabase,
   public navParams: NavParams) {
-    this.restaurantsRef =db.list('Restaurants', ref=>ref.orderByChild("TimeStamp"));
+    this.getRestaurants();
+  }
 
-    this.restaurants = this.restaurantsRef.snapshotChanges().pipe(
-      map(changes => 
-        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      )
-    );
+
+
+  getRestaurants(){
+    this.restaurantsRef.snapshotChanges().subscribe(snap=>{
+      let tempArray = [];
+      snap.forEach(snp=>{
+        let temp : any = snp.payload.val();
+        temp.key = snp.key;
+        tempArray.push(temp);
+        console.log(temp);
+      })
+      this.restaurants = tempArray;
+      this.restaurantsLoaded = tempArray;
+    })
+
+  }
+
+  initializeItems(): void {
+    this.restaurants = this.restaurantsLoaded;
+  }
+  getItems(searchbar) {
+    this.initializeItems();
+    let q = searchbar;
+    if (!q) {
+      return;
+    }
+    this.restaurants = this.restaurants.filter((v) => {
+      if((v.RestaurantName || v.ProfitToLoyalPercentage || v.RestaurantEmail) && q) {
+        if (
+          (v.RestaurantName.toLowerCase().indexOf(q.toLowerCase()) > -1)
+          ||(v.ProfitToLoyalPercentage.toLowerCase().indexOf(q.toLowerCase()) > -1)
+          ||(v.RestaurantEmail.toLowerCase().indexOf(q.toLowerCase()) > -1)
+          ) {
+          return true;
+        }
+        return false;
+      }
+    });
   }
 
   addRestaurant(){

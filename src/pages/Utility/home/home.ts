@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController, IonicPage } from 'ionic-angular';
 import * as firebase from 'firebase';
-import {CountoModule} from 'angular2-counto';
 
+import { AngularFireDatabase} from '@angular/fire/database';
 
 @IonicPage()
 @Component({
@@ -14,38 +14,34 @@ export class HomePage {
   partners : number = 0;
   restaurants : number = 0;
   banners : number = 0;
+  fCats : number = 0;
 
-  partnersRef = firebase.database().ref("PartnerAdmins");
-  restaurantsRef = firebase.database().ref("Restaurants");
-  bannersRef = firebase.database().ref("Banners");
+  partnersRef =this.db.list('PartnerAdmins');
+  restaurantsRef = this.db.list("Restaurants");
+  bannersRef = this.db.list("Banners");
+  foodCats = this.db.list("Food Categories");
 
   constructor(
   public navCtrl: NavController,
+  private db: AngularFireDatabase,
   private menuCtrl : MenuController) {
     this.menuCtrl.enable(true);
-    this.getPartners();
-    this.getRestaurants();
-    this.getBanners();
-  }
 
-
-
-  getPartners(){
-    this.partnersRef.on('value',item=>{
-      this.partners = item.numChildren();
+    this.partnersRef.snapshotChanges().subscribe(snap=>{
+      this.partners = snap.length;
     })
-  }
 
-  getRestaurants(){
-    this.restaurantsRef.on('value',item=>{
-      this.restaurants = item.numChildren();
+    this.restaurantsRef.snapshotChanges().subscribe(snap=>{
+      this.restaurants = snap.length;
     })
-  }
 
-  getBanners(){
-    this.bannersRef.on('value',item=>{
-      this.banners = item.numChildren();
+    this.bannersRef.snapshotChanges().subscribe(snap=>{
+      this.banners = snap.length;
     })
-  }
 
+    this.foodCats.snapshotChanges().subscribe(snap=>{
+      this.fCats = snap.length;
+    })
+
+  }
 }

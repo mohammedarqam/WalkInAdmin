@@ -14,9 +14,9 @@ import { PartnerAdminOptionsPage } from '../partner-admin-options/partner-admin-
 export class PartnerAdminsPage {
 
 
-  partnersRef: AngularFireList<any>;
-  partners: Observable<any[]>;
-  search : string="";
+  partnersRef = this.db.list('PartnerAdmins', ref=>ref.orderByChild("TimeStamp"));
+  partners: Array<any> = [];
+  partnersLoaded: Array<any> = [];
 
   constructor(
   public navCtrl: NavController, 
@@ -28,15 +28,47 @@ export class PartnerAdminsPage {
   ) {
     this.menuCtrl.enable(true);
 
-    this.partnersRef =db.list('PartnerAdmins', ref=>ref.orderByChild("TimeStamp"));
-
-    this.partners = this.partnersRef.snapshotChanges().pipe(
-      map(changes => 
-        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      )
-    );
+    this.getRestaurants();
+  }
 
 
+
+  getRestaurants(){
+    this.partnersRef.snapshotChanges().subscribe(snap=>{
+      let tempArray = [];
+      snap.forEach(snp=>{
+        let temp : any = snp.payload.val();
+        temp.key = snp.key;
+        tempArray.push(temp);
+        console.log(temp);
+      })
+      this.partners = tempArray;
+      this.partnersLoaded = tempArray;
+    })
+
+  }
+
+  initializeItems(): void {
+    this.partners = this.partnersLoaded;
+  }
+  getItems(searchbar) {
+    this.initializeItems();
+    let q = searchbar;
+    if (!q) {
+      return;
+    }
+    this.partners = this.partners.filter((v) => {
+      if((v.Name || v.Phone || v.Email) && q) {
+        if (
+          (v.Name.toLowerCase().indexOf(q.toLowerCase()) > -1)
+          ||(v.Phone.toLowerCase().indexOf(q.toLowerCase()) > -1)
+          ||(v.Email.toLowerCase().indexOf(q.toLowerCase()) > -1)
+          ) {
+          return true;
+        }
+        return false;
+      }
+    });
   }
 
   viewOptions(myEvent,p){

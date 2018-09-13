@@ -11,13 +11,14 @@ import { FaqsViewPage } from '../pages/Utility/faqs-view/faqs-view';
 import { BannersViewPage } from '../pages/Banners/banners-view/banners-view';
 import { ViewFoodCategoriesPage } from '../pages/Food Categories/view-food-categories/view-food-categories';
 import { PackagesPage } from '../pages/Packages/packages/packages';
+import { MenuAnalysisPage } from '../pages/Partner Restaurants/Restaurants/menu-analysis/menu-analysis';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = UsersPage;
+  rootPage: any = HomePage;
 
   activePage: any;
   pages: Array<{ title: string, component: any, icon: any, color : string }>;
@@ -44,7 +45,7 @@ export class MyApp {
       { title: 'FAQs', component: FaqsViewPage, icon: "md-help",color: "whiter" },
      
     ];
-    this.activePage = this.pages[3];
+    this.activePage = this.pages[0];
   }
 
   initializeApp() {

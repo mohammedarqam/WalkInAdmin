@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import {Chart} from 'chart.js'
 import * as firebase from 'firebase';
 
-
 @IonicPage()
 @Component({
   selector: 'page-menu-analysis',
@@ -11,13 +10,16 @@ import * as firebase from 'firebase';
 })
 export class MenuAnalysisPage {
 
-  restKey = this.navParams.get("key");
+  restKey =  this.navParams.get("key");
 
-  @ViewChild('barCanvas') barCanvas;
+  @ViewChild('barCanvas') barCanvas ;
   barChart: any;
 
-  menuRef = firebase.database().ref("Menus").child(this.restKey);
-  menuItems : Array<any> = [];
+  menuRef= firebase.database().ref("Menus").child(this.restKey);
+  
+  ItemNames  : Array<any> = [];
+  Ordered  : Array<any> = [];
+
   constructor(
   public navCtrl: NavController, 
   public loadingCtrl : LoadingController,
@@ -29,37 +31,33 @@ export class MenuAnalysisPage {
 
   getMenu(){
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-    loading.present();
-
-    this.menuRef.once('value',itemSnapshot=>{
-      this.menuItems = [];
-      itemSnapshot.forEach(itemSnap =>{
-        var temp = itemSnap.val();
-        temp.key = itemSnap.key;
-        this.menuItems.push(temp);
-        return false;
+        content: 'Please wait...'
       });
-    }).then(()=>{
-      loading.dismiss();
-    }) ;
-    }
 
+      this.ItemNames = [];
+      this.Ordered = [];
+        this.menuRef.once('value',itemSnap=>{
+            itemSnap.forEach(snap=>{
+                this.ItemNames.push(snap.val().ItemName)
+                this.Ordered.push(snap.val().Ordered)
+            })
+            return false;
+            }).then(()=>{
+        this.viewBarChart();
+        loading.dismiss();
+    })
+ 
+  } 
 
-
-  ionViewDidLoad() {
-    this.viewBarChart();
-  }
 
   viewBarChart(){
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: 'bar',
       data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple","Blue", "Yellow", "Green","Blue", "Yellow", "Green", "Orange"],
+          labels: this.ItemNames,
           datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3, 19, 3, 5, 2, 3, 19, 3, 5, 2, 3],
+              label: '# of Orders',
+              data: this.Ordered,
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
