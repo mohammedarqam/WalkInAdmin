@@ -15,7 +15,7 @@ export class BannersViewPage {
 
   bannersRef: AngularFireList<any>;
   banners: Observable<any[]>;
-  bannerRef = firebase.database().ref("Banners");
+  bannerRef = firebase.database().ref("Extra Data/Banners");
 
 
   constructor(
@@ -26,7 +26,7 @@ export class BannersViewPage {
   public modalCtrl : ModalController,
   public navParams: NavParams
   ) {
-    this.bannersRef =db.list('Banners', ref=>ref.orderByChild("View"));
+    this.bannersRef =db.list('Extra Data/Banners', ref=>ref.orderByChild("View"));
 
     this.banners = this.bannersRef.snapshotChanges().pipe(
       map(changes => 

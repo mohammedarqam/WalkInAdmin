@@ -15,11 +15,13 @@ export class HomePage {
   restaurants : number = 0;
   banners : number = 0;
   fCats : number = 0;
+  users : number = 0;
 
-  partnersRef =this.db.list('PartnerAdmins');
-  restaurantsRef = this.db.list("Restaurants");
-  bannersRef = this.db.list("Banners");
-  foodCats = this.db.list("Food Categories");
+  partnersRef =this.db.list('Partners');
+  restaurantsRef = this.db.list("Restaurant Data/Restaurants");
+  usersRef = this.db.list("User Data/Users");
+  bannersRef = this.db.list("Extra Data/Banners");
+  foodCats = this.db.list("Restaurant Data/Food Categories");
 
   constructor(
   public navCtrl: NavController,
@@ -29,6 +31,10 @@ export class HomePage {
 
     this.partnersRef.snapshotChanges().subscribe(snap=>{
       this.partners = snap.length;
+    })
+
+    this.usersRef.snapshotChanges().subscribe(snap=>{
+      this.users = snap.length;
     })
 
     this.restaurantsRef.snapshotChanges().subscribe(snap=>{

@@ -12,7 +12,7 @@ export class PartnerAdminViewPage {
 
   AdminUid = firebase.auth().currentUser.uid;
   valid : boolean = false;
-  adminRef = firebase.database().ref("WalkInAdmin").child(this.AdminUid);
+  adminRef = firebase.database().ref("WalkIn Admin Data/Admins").child(this.AdminUid);
 
   public partner = this.navParams.get("partner");
   public adminEmail : string;
@@ -20,7 +20,7 @@ export class PartnerAdminViewPage {
 
   stores : Array<any> = [];
 
-  partnerRef = firebase.database().ref("PartnerAdmins").child(this.partner.key);
+  partnerRef = firebase.database().ref("Partners").child(this.partner.key);
 
   constructor(
   public navCtrl: NavController, 
@@ -39,7 +39,7 @@ export class PartnerAdminViewPage {
     this.partnerRef.child("Stores").once('value',itemSnapshot=>{
       this.stores = [];
       itemSnapshot.forEach(itemSnap =>{
-        firebase.database().ref("Restaurants").child(itemSnap.key).once('value',item=>{
+        firebase.database().ref("Restaurant Data/Restaurants").child(itemSnap.key).once('value',item=>{
           this.stores.push(item.val());
         })
         return false;

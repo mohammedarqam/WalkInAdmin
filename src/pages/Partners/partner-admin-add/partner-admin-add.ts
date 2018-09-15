@@ -19,8 +19,8 @@ export class PartnerAdminAddPage {
   Password : string = this.generatePassword();
   ExtraDetails : string="";
 
-  adminRef = firebase.database().ref("WalkInAdmin").child(this.AdminUid);
-  partnerRef = firebase.database().ref("PartnerAdmins");
+  adminRef = firebase.database().ref("WalkIn Admin Data/Admins").child(this.AdminUid);
+  partnerRef = firebase.database().ref("Partners");
 
   adminEmail : string;
   adminPass : string;

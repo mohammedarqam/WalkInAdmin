@@ -29,7 +29,7 @@ export class UserViewNotificationsPage {
   public db : AngularFireDatabase,
   public navParams: NavParams
   ) {
-    this.notiRef =db.list(`Notifications/User/`, ref=>ref.orderByChild("TimeStamp"));
+    this.notiRef =db.list(`Extra Data/Notifications/User/`, ref=>ref.orderByChild("TimeStamp"));
 
     this.notis = this.notiRef.snapshotChanges().pipe(
       map(changes => 
@@ -51,7 +51,7 @@ export class UserViewNotificationsPage {
   }
 
 addNoti(){
-  firebase.database().ref("Notifications").child("User").push({
+  firebase.database().ref("Extra Data/Notifications").child("User").push({
     Title : this.title,
     Description : this.descript,
     Status : "Pending",

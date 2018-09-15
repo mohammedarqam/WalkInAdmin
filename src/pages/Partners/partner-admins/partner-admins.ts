@@ -14,7 +14,7 @@ import { PartnerAdminOptionsPage } from '../partner-admin-options/partner-admin-
 export class PartnerAdminsPage {
 
 
-  partnersRef = this.db.list('PartnerAdmins', ref=>ref.orderByChild("TimeStamp"));
+  partnersRef = this.db.list('Partners', ref=>ref.orderByChild("TimeStamp"));
   partners: Array<any> = [];
   partnersLoaded: Array<any> = [];
 

@@ -15,7 +15,7 @@ import { ViewMenuPage } from '../view-menu/view-menu';
 export class ViewRestaurantsPage {
 
 
-  restaurantsRef = this.db.list('Restaurants', ref=>ref.orderByChild("TimeStamp"));
+  restaurantsRef = this.db.list('Restaurant Data/Restaurants', ref=>ref.orderByChild("TimeStamp"));
   restaurants: Array<any> = [];
   restaurantsLoaded: Array<any> = [];
 

@@ -14,7 +14,7 @@ export class FaqsViewPage {
 
   faqsRef: AngularFireList<any>;
   faqs: Observable<any[]>;
-  fRef = firebase.database().ref("VendorExtra").child("FAQs");
+  fRef = firebase.database().ref("Extra Data").child("FAQs");
 
   constructor(
   public navCtrl: NavController, 
@@ -23,7 +23,7 @@ export class FaqsViewPage {
   public alertCtrl : AlertController,
   public navParams: NavParams
   ) {
-    this.faqsRef =db.list('VendorExtra/FAQs', ref=>ref.orderByChild("Priority"));
+    this.faqsRef =db.list('Extra Data/FAQs', ref=>ref.orderByChild("Priority"));
 
     this.faqs = this.faqsRef.snapshotChanges().pipe(
       map(changes => 

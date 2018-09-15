@@ -13,13 +13,13 @@ import * as firebase from 'firebase';
 })
 export class ViewFoodCategoriesPage {
 
-  catsRef =this.db.list('Food Categories');
+  catsRef =this.db.list('Restaurant Data/Food Categories');
   cats: Array<any> = [];
   catsLoaded: Array<any> = [];
 
 
 
-  CatRef = firebase.database().ref("Food Categories");
+  CatRef = firebase.database().ref("Restaurant Data/Food Categories");
 
   constructor(
   public navCtrl: NavController, 

@@ -33,7 +33,7 @@ export class ViewMenuPage {
   public db : AngularFireDatabase,
   public navParams: NavParams
   ) {
-    this.menuRef =db.list(`Menus/${this.restaurant.key}`, ref=>ref.orderByChild("Ordered"));
+    this.menuRef =db.list(`Restaurant Data/Menus/${this.restaurant.key}`, ref=>ref.orderByChild("Ordered"));
 
     this.items = this.menuRef.snapshotChanges().pipe(
       map(changes => 
@@ -41,7 +41,7 @@ export class ViewMenuPage {
       )
     );
 
-    this.catRef =db.list(`Food Categories`);
+    this.catRef =db.list(`Restaurant Data/Food Categories`);
 
     this.cats = this.catRef.snapshotChanges().pipe(
       map(changes => 
@@ -69,7 +69,7 @@ export class ViewMenuPage {
   }
 
 addItem(){
-  firebase.database().ref("Menus").child(this.restaurant.key).push({
+  firebase.database().ref("Restaurant Data/Menus").child(this.restaurant.key).push({
     ItemName : this.name,
     Price : this.price,
     Type : this.type,

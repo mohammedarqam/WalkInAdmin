@@ -14,7 +14,6 @@ export class LoginPage {
   email: string;
   pass: string;
   
-  userRef = firebase.database().ref("WalkInAdmin");
   public user : Array<any> = [];
 
 
@@ -26,21 +25,6 @@ export class LoginPage {
     ) {
     this.menuCtrl.enable(false);
     
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-      firebase.database().ref("WalkInAdmin").child(firebase.auth().currentUser.uid).once('value',itemSnapshot=>{
-          if(itemSnapshot.exists()){
-            var welMsg = "Welcome"+" "+itemSnapshot.val().Name;
-            this.navCtrl.setRoot(HomePage);
-            this.presentToast(welMsg);
-          }
-  });
-    }
-    else{
-      this.email = null;
-      this.pass = null;
-    }
-  });  
 }
 
 
@@ -66,17 +50,7 @@ checkData(){
     loading.present();
 
     firebase.auth().signInWithEmailAndPassword(this.email,this.pass).then(()=>{
-      this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
-        if(itemSnap.exists()){
-          var welMsg = "Welcome"+" "+itemSnap.val().Name;
-          this.navCtrl.setRoot(HomePage);
-          this.presentToast(welMsg);
-        }else{
-          this.notAdmin();
-        }
-      }).then(()=>{
-        loading.dismiss();
-      })
+      loading.dismiss();
     }).catch((e)=>{
       var err = e.message;
       this.presentToast(err);      

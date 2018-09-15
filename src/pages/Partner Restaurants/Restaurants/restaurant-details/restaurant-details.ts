@@ -15,7 +15,7 @@ export class RestaurantDetailsPage {
 
   AdminUid = firebase.auth().currentUser.uid;
   valid : boolean = false;
-  adminRef = firebase.database().ref("WalkInAdmin").child(this.AdminUid);
+  adminRef = firebase.database().ref("WalkIn Admin Data/Admins").child(this.AdminUid);
 
 
   public restaurant = this.navParams.get("restaurant");
@@ -37,7 +37,7 @@ export class RestaurantDetailsPage {
     }
   
   getpartner(){
-    firebase.database().ref("PartnerAdmins").child(this.restaurant.AdminId).once('value',itemSnap=>{
+    firebase.database().ref("Partners").child(this.restaurant.AdminId).once('value',itemSnap=>{
       let temp = itemSnap.val();
       temp.key = itemSnap.key;
       this.partner = temp;

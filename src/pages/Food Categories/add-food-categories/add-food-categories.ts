@@ -12,7 +12,7 @@ import moment from 'moment';
 export class AddFoodCategoriesPage {
 
   name : string;
-  catRef = firebase.database().ref("Food Categories");
+  catRef = firebase.database().ref("Restaurant Data/Food Categories");
   constructor(
   public navCtrl: NavController, 
   public viewCtrl : ViewController,

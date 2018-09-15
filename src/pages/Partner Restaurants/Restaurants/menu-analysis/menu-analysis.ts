@@ -15,7 +15,7 @@ export class MenuAnalysisPage {
   @ViewChild('barCanvas') barCanvas ;
   barChart: any;
 
-  menuRef= firebase.database().ref("Menus").child(this.restKey);
+  menuRef= firebase.database().ref("Restaurant Data/Menus").child(this.restKey);
   
   ItemNames  : Array<any> = [];
   Ordered  : Array<any> = [];

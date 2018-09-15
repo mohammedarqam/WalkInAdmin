@@ -14,7 +14,7 @@ import moment from 'moment';
 export class AddRestaurantPage {
 
   AdminUid = firebase.auth().currentUser.uid;
-  adminRef = firebase.database().ref("WalkInAdmin").child(this.AdminUid);
+  adminRef = firebase.database().ref("WalkIn Admin Data/Admins").child(this.AdminUid);
   public adminEmail : string;
   public adminPass : string;
 
@@ -39,7 +39,7 @@ export class AddRestaurantPage {
   public toastCtrl : ToastController,
   public navParams: NavParams
   ) {
-    this.partnersRef =db.list('PartnerAdmins', ref=>ref.orderByChild("TimeStamp"));
+    this.partnersRef =db.list('Partners', ref=>ref.orderByChild("TimeStamp"));
 
     this.partners = this.partnersRef.snapshotChanges().pipe(
       map(changes => 
@@ -110,7 +110,7 @@ export class AddRestaurantPage {
         })
 
       }).then(()=>{
-        firebase.database().ref("Restaurants").child(firebase.auth().currentUser.uid).set({
+        firebase.database().ref("Restaurant Data/Restaurants").child(firebase.auth().currentUser.uid).set({
           RestaurantName : this.Name,
           AdminId : this.Partner,
           RestaurantContact : this.RestaurantContact,
@@ -122,7 +122,7 @@ export class AddRestaurantPage {
           RestaurantEmail : partnermail,
           RestaurantPassword : partnerPass,
         }).then(()=>{
-          firebase.database().ref("PartnerAdmins").child(this.Partner).child("Stores").child(firebase.auth().currentUser.uid).set(true).then(()=>{
+          firebase.database().ref("Partners").child(this.Partner).child("Stores").child(firebase.auth().currentUser.uid).set(true).then(()=>{
             firebase.auth().signOut().then(()=>{
               firebase.auth().signInWithEmailAndPassword(this.adminEmail,this.adminPass).then(()=>{
                 loading.dismiss();

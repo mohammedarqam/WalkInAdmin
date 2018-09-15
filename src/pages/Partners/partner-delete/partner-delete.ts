@@ -13,7 +13,7 @@ export class PartnerDeletePage {
 
   pName : string;
   partner = this.navParams.get("partner");
-  partnerRef = firebase.database().ref("PartnerAdmins").child(this.partner.key);
+  partnerRef = firebase.database().ref("Partners").child(this.partner.key);
 
 
   constructor(

@@ -37,7 +37,7 @@ imageRef = firebase.storage().ref("Banners/" + this.order);
       firebase.storage().ref("Banners/" + this.order).getDownloadURL().then((dURL)=>{
         this.url = dURL;
       }).then(()=>{
-        firebase.database().ref("Banners").push({
+        firebase.database().ref("Extra Data/Banners").push({
           Name : this.order,
           Image : this.url,
           PostTime : moment().format("DD/MMM-HH:mm")
@@ -53,7 +53,7 @@ imageRef = firebase.storage().ref("Banners/" + this.order);
 
   presentToast() {
     let toast = this.toastCtrl.create({
-      message: 'Posted',
+      message: 'Banner Added',
       duration: 4000,
       showCloseButton: false,
     });

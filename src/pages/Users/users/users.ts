@@ -12,7 +12,7 @@ import { UserOptionsPage } from '../user-options/user-options';
 })
 export class UsersPage {
 
-  usersRef = this.db.list('Users', ref=>ref.orderByChild("TimeStamp"));
+  usersRef = this.db.list('User Data/Users', ref=>ref.orderByChild("TimeStamp"));
   users: Array<any> = [];
   usersLoaded: Array<any> = [];
 
